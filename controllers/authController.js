@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const sendEmail = require('../utils/email');
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -120,5 +121,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   // 3) Send it to user's email
+  const resetURL = ``;
 });
 exports.resetPassword = (req, res, next) => {};
